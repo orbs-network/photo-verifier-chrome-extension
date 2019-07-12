@@ -1,3 +1,6 @@
+var account = Orbs.createAccount();
+console.log("New account: "+account.publicKey);
+
 var allImages = document.getElementsByTagName("img");
 for (var i = 0; i < allImages.length ; i++) {
   allImages[i].style.border = "5px solid red";
