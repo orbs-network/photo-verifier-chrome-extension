@@ -12,9 +12,8 @@ chrome.runtime.onMessage.addListener(
           const r = await query(phash)
           sendResponse(r)
         }
-        else if (xhr.status !== 200) {
-          console.error('Request failed.  Returned status of ' + xhr.status);
-          sendResponse({ error: "ERROR" })
+        else {
+          sendResponse({ ok: false })
         }
       };
       xhr.send(body);
@@ -49,4 +48,3 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     file: "/inject.js"
   });
 });
-
