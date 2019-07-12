@@ -5,32 +5,27 @@ var client = new Orbs.Client('https://validator.orbs-test.com/vchains/6666', 666
 
 chrome.runtime.onMessage.addListener(
   function (request, sender, sendResponse) {
-    //console.log(request)
+    console.log(request.url)
     //console.log(sender)
     //console.log(sendResponse)
 
-    try {
-      if (request.action == "verify") {
-        const body = '{"url":"' + request.url + '"}'
+    if (request.action == "verify") {
+      const body = '{"url":"' + request.url + '"}'
 
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://10.240.2.76:5678');
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onload = async function () {
-          if (xhr.status === 200) {
-            const phash = xhr.responseText;
-            const r = await query(phash)
-            sendResponse(r)
-          }
-          else {
-            sendResponse({ ok: false })
-          }
-        };
-        xhr.send(body);
-      }
-    }
-    catch (err) {
-      sendResponse({ ok: false })
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://10.240.2.76:5678');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onload = async function () {
+        if (xhr.status === 200) {
+          const phash = xhr.responseText;
+          const r = await query(phash)
+          sendResponse(r)
+        }
+        else {
+          sendResponse({ ok: false })
+        }
+      };
+      xhr.send(body);
     }
 
     return true
