@@ -3,10 +3,11 @@
   "description": "Verifies which photos are registered",
   "version": "2.0",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "http://10.240.2.76:5678/*"
   ],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["orbs-client-sdk.js", "background.js"],
     "persistent": false
   },
   "browser_action": {
