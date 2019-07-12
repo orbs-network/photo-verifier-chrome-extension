@@ -6,7 +6,16 @@ for (var i = 0; i < allImages.length; i++) {
       img.style.border = "5px solid green";
       let title = ''
       for (var key in response.source) {
-        title += key + ': ' + response.source[key] + '\n';
+        let value = ''
+        if (key == 'author' || key == 'rightModel') {
+          const tmp = response.source[key]
+          for (var k in tmp) {
+            value += '\n\t' + k + ': ' + tmp[k];
+          }
+        } else {
+          value = response.source[key];
+        }
+        title += key + ': ' + value + '\n';
       }
       img.title = title;
     } else {
