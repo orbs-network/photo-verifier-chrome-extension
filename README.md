@@ -1,5 +1,7 @@
 # Photo Verifier Chrome Extension
 
+Google Chrome browser extension that allows verifying all existing images on a certain web page. Images that do not appear in the blockchain registry are given red borders while images that do appear are given green borders and a show a tooltip with the registered metadata.
+
 ## Development
 
 1. Clone the repo to a local folder on your machine
