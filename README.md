@@ -1,11 +1,11 @@
-# Photo Verifier Chrome Extension
+# Photo Verifier Chrome Extension + Smart Contract
 
 Google Chrome browser extension that allows verifying all existing images on a certain web page. Images that do not appear in the blockchain registry are given red borders while images that do appear are given green borders and a show a tooltip with the registered metadata.
 
-## Development
+## Running Extension
 
 1. Clone the repo to a local folder on your machine
-2. Open this link inside Google Chrome: chrome://extensions/
+2. Open this link inside Google Chrome: [chrome://extensions/](chrome://extensions/)
 3. Enable `Developer mode` on the top right
 4. Click the `Load unpacked` button
 5. Select the extension file from your local machine

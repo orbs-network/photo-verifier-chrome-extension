@@ -1,19 +1,22 @@
-var account = Orbs.createAccount();
+const account = Orbs.createAccount();
 console.log("New account: " + account.publicKey);
 
-var client = new Orbs.Client('https://validator.orbs-test.com/vchains/6666', 6666, 'TEST_NET');
+const VCHAIN = 1000;
+const NODE_URL = 'https://node1.demonet.orbs.com/vchains/' + VCHAIN;
+const HASH_SERVICE_URL = 'https://image-hash.herokuapp.com/hash';
+const CONTRACT_NAME = 'ExtensionPhotoRegistry';
+
+const client = new Orbs.Client(NODE_URL, VCHAIN, 'TEST_NET');
 
 chrome.runtime.onMessage.addListener(
   function (request, sender, sendResponse) {
     console.log(request.url)
-    //console.log(sender)
-    //console.log(sendResponse)
 
     if (request.action == "verify") {
       const body = '{"url":"' + request.url + '"}'
 
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://10.240.2.76:5678');
+      xhr.open('POST', HASH_SERVICE_URL);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.onload = async function () {
         if (xhr.status === 200) {
@@ -35,7 +38,7 @@ chrome.runtime.onMessage.addListener(
 async function query(phash) {
   const q = client.createQuery(
     account.publicKey,
-    'registry',
+    CONTRACT_NAME,
     'verify',
     [Orbs.argString(phash)]
   )
