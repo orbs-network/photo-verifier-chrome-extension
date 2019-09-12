@@ -3,6 +3,8 @@ console.log("New account: " + account.publicKey);
 
 const VCHAIN = 1000;
 const NODE_URL = 'https://node1.demonet.orbs.com/vchains/' + VCHAIN;
+// const VCHAIN = 42;
+// const NODE_URL = 'http://localhost:8080';
 const HASH_SERVICE_URL = 'https://image-hash.herokuapp.com/hash';
 const CONTRACT_NAME = 'ExtensionPhotoRegistry';
 
